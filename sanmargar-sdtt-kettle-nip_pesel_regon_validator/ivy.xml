@@ -9,21 +9,19 @@
   </configurations>
 
   <dependencies defaultconf="default">
-
+  
     <!-- kettle dependencies -->
     <dependency org="pentaho-kettle" name="kettle-core" rev="${project.revision}" transitive="false" changing="true"/>
 	<dependency org="pentaho-kettle" name="kettle-engine" rev="${project.revision}" transitive="false" changing="true"/>    
 	<dependency org="pentaho-kettle" name="kettle-ui-swt" rev="${project.revision}" transitive="false" changing="true"/>
 	<dependency org="pentaho" name="pentaho-metadata" rev="${dependency.pentaho-metadata.revision}" changing="true" />
-
-	<!-- swt dependencies -->
-	<!--dependency org="org.eclipse.swt" name="swt-win32" rev="3.3.0.3346" transitive="false" changing="false"/-->
+	    
+ 	<!-- swt dependencies -->
 	<dependency org="org.eclipse.swt" name="org.eclipse.swt.cocoa.macosx.x86_64" rev="4.3"/>
-
 
     <!-- testing dependencies -->
     <dependency org="junit" name="junit" rev="3.8.1" transitive="false" conf="test->default"/>
     <dependency org="log4j" name="log4j" rev="1.2.16" transitive="false" conf="test->default"/>
-    
+     
   </dependencies>
 </ivy-module>

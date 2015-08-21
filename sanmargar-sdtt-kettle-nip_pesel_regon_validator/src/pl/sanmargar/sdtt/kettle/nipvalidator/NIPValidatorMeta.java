@@ -251,8 +251,8 @@ public class NIPValidatorMeta extends BaseStepMeta implements StepMetaInterface 
 		}
 	}
 
-	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev,
-			String input[], String output[], RowMetaInterface info) {
+	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev, 
+			String[] input, String[] output, RowMetaInterface info, VariableSpace space, Repository repository, IMetaStore metaStore ) {
 		CheckResult cr;
 
 		checkNotEmpty(remarks, stepMeta, resultFieldName);

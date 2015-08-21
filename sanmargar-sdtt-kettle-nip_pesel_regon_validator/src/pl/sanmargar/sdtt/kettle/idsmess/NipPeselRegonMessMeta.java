@@ -252,9 +252,8 @@ public class NipPeselRegonMessMeta extends BaseStepMeta implements StepMetaInter
 		getField(inputRowMeta, name, space, getResultRegonFieldName(), ValueMeta.TYPE_STRING);
 	}
 
-
-	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev,
-			String input[], String output[], RowMetaInterface info) {
+	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev, 
+			String[] input, String[] output, RowMetaInterface info, VariableSpace space, Repository repository, IMetaStore metaStore ) {
 		CheckResult cr;
 		if (Const.isEmpty(sourcePeselFieldName) && Const.isEmpty(sourceNipFieldName) && Const.isEmpty(sourceRegonFieldName) ) {
 			String error_message = "";
