@@ -52,19 +52,17 @@ import org.w3c.dom.Node;
 	i18nPackageName = "pl.sanmargar.sdtt.kettle.peselvalidator",
 	name = "SdttPeselValidatorStep.Name", 
 	description = "SdttPeselValidatorStep.TooltipDesc",
-	categoryDescription = "i18n:pl.sanmargar.sdtt.kettle:Steps.Category.Name"	
-//	categoryDescription = "i18n:org.pentaho.di.trans.step:BaseStep.Category.Transform"
+	categoryDescription = "i18n:pl.sanmargar.sdtt.kettle.nipvalidator:Steps.Category.Name"	
 )
 
 /**
  * @author rafal_jot
  */
 
-
 public class PESELValidatorMeta extends BaseStepMeta implements StepMetaInterface {
 
 	private static Class<?> PKG = PESELValidatorMeta.class; // for i18n purposes
-	
+
 	private String sourcePeselFieldName;
 	private String resultStdPeselFieldName;
 	private String resultFieldName;
@@ -282,8 +280,9 @@ public class PESELValidatorMeta extends BaseStepMeta implements StepMetaInterfac
 		}
 	}
 
-	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev, 
-			String[] input, String[] output, RowMetaInterface info, VariableSpace space, Repository repository, IMetaStore metaStore ) {
+	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev,
+			String[] input, String[] output, RowMetaInterface info, VariableSpace space, Repository repository,
+			IMetaStore metaStore) {
 		CheckResult cr;
 
 		checkNotEmpty(remarks, stepMeta, resultFieldName);

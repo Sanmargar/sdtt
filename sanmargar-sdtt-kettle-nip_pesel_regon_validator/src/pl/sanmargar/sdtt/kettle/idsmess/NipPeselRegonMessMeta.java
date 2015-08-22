@@ -52,27 +52,26 @@ import org.w3c.dom.Node;
 	i18nPackageName = "pl.sanmargar.sdtt.kettle.idsmess",
 	name = "SdttPeselNipRegonMessStep.Name", 
 	description = "SdttPeselNipRegonMessStep.TooltipDesc",
-	categoryDescription = "i18n:pl.sanmargar.sdtt.kettle:Steps.Category.Name"	
-//	categoryDescription = "i18n:org.pentaho.di.trans.step:BaseStep.Category.Transform"
+	categoryDescription = "i18n:pl.sanmargar.sdtt.kettle.idsmess:Steps.Category.Name"	
 )
 
 /**
  * @author rafal_jot
  */
 
-
 public class NipPeselRegonMessMeta extends BaseStepMeta implements StepMetaInterface {
 
-	private static Class<?> PKG = NipPeselRegonMessMeta.class; // for i18n purposes
-	
+	private static Class<?> PKG = NipPeselRegonMessMeta.class; // for i18n
+																// purposes
+
 	private String sourcePeselFieldName;
 	private String sourceNipFieldName;
 	private String sourceRegonFieldName;
-	
+
 	private String resultPeselFieldName;
 	private String resultNipFieldName;
 	private String resultRegonFieldName;
-	
+
 	private String resultFieldName;
 
 	private final String NAME_SOURCE_PESEL_FIELDNAME = "sourcePeselFieldName";
@@ -84,7 +83,7 @@ public class NipPeselRegonMessMeta extends BaseStepMeta implements StepMetaInter
 	private final String NAME_RESULT_REGON_FIELDNAME = "resultRegonFieldName";
 
 	private final String NAME_RESULT_FIELDNAME = "resultFieldName";
-	
+
 	public NipPeselRegonMessMeta() {
 		super();
 	}
@@ -120,10 +119,11 @@ public class NipPeselRegonMessMeta extends BaseStepMeta implements StepMetaInter
 	public String getSourceNipFieldName() {
 		return this.sourceNipFieldName;
 	}
+
 	public String getSourceRegonFieldName() {
 		return this.sourceRegonFieldName;
 	}
-	
+
 	public String getResultPeselFieldName() {
 		return this.resultPeselFieldName;
 	}
@@ -143,9 +143,11 @@ public class NipPeselRegonMessMeta extends BaseStepMeta implements StepMetaInter
 	public void setSourcePeselFieldName(String fieldname) {
 		this.sourcePeselFieldName = fieldname;
 	}
+
 	public void setSourceNipFieldName(String fieldname) {
 		this.sourceNipFieldName = fieldname;
 	}
+
 	public void setSourceRegonFieldName(String fieldname) {
 		this.sourceRegonFieldName = fieldname;
 	}
@@ -153,17 +155,18 @@ public class NipPeselRegonMessMeta extends BaseStepMeta implements StepMetaInter
 	public void setResultPeselFieldName(String fieldname) {
 		this.resultPeselFieldName = fieldname;
 	}
+
 	public void setResultNipFieldName(String fieldname) {
 		this.resultNipFieldName = fieldname;
 	}
+
 	public void setResultRegonFieldName(String fieldname) {
 		this.resultRegonFieldName = fieldname;
 	}
-	
+
 	public void setResultFieldName(String resultfieldname) {
 		this.resultFieldName = resultfieldname;
 	}
-
 
 	public Object clone() {
 		NipPeselRegonMessMeta retval = (NipPeselRegonMessMeta) super.clone();
@@ -192,8 +195,8 @@ public class NipPeselRegonMessMeta extends BaseStepMeta implements StepMetaInter
 			setResultNipFieldName(XMLHandler.getTagValue(stepnode, NAME_RESULT_NIP_FIELDNAME));
 			setResultRegonFieldName(XMLHandler.getTagValue(stepnode, NAME_RESULT_REGON_FIELDNAME));
 		} catch (Exception e) {
-			throw new KettleXMLException(
-					BaseMessages.getString(PKG, "PeselNipMessMeta.Exception.UnableToReadStepInfo"), e);
+			throw new KettleXMLException(BaseMessages.getString(PKG, "PeselNipMessMeta.Exception.UnableToReadStepInfo"),
+					e);
 		}
 	}
 
@@ -203,7 +206,7 @@ public class NipPeselRegonMessMeta extends BaseStepMeta implements StepMetaInter
 			rep.saveStepAttribute(id_transformation, id_step, NAME_SOURCE_PESEL_FIELDNAME, sourcePeselFieldName);
 			rep.saveStepAttribute(id_transformation, id_step, NAME_SOURCE_NIP_FIELDNAME, sourceNipFieldName);
 			rep.saveStepAttribute(id_transformation, id_step, NAME_SOURCE_REGON_FIELDNAME, sourceRegonFieldName);
-			
+
 			rep.saveStepAttribute(id_transformation, id_step, NAME_RESULT_FIELDNAME, resultFieldName);
 			rep.saveStepAttribute(id_transformation, id_step, NAME_RESULT_PESEL_FIELDNAME, resultPeselFieldName);
 			rep.saveStepAttribute(id_transformation, id_step, NAME_RESULT_NIP_FIELDNAME, resultNipFieldName);
@@ -221,7 +224,7 @@ public class NipPeselRegonMessMeta extends BaseStepMeta implements StepMetaInter
 			sourcePeselFieldName = rep.getStepAttributeString(id_step, NAME_SOURCE_PESEL_FIELDNAME);
 			sourceNipFieldName = rep.getStepAttributeString(id_step, NAME_SOURCE_NIP_FIELDNAME);
 			sourceRegonFieldName = rep.getStepAttributeString(id_step, NAME_SOURCE_REGON_FIELDNAME);
-			
+
 			resultPeselFieldName = rep.getStepAttributeString(id_step, NAME_RESULT_PESEL_FIELDNAME);
 			resultNipFieldName = rep.getStepAttributeString(id_step, NAME_RESULT_NIP_FIELDNAME);
 			resultRegonFieldName = rep.getStepAttributeString(id_step, NAME_RESULT_REGON_FIELDNAME);
@@ -252,10 +255,12 @@ public class NipPeselRegonMessMeta extends BaseStepMeta implements StepMetaInter
 		getField(inputRowMeta, name, space, getResultRegonFieldName(), ValueMeta.TYPE_STRING);
 	}
 
-	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev, 
-			String[] input, String[] output, RowMetaInterface info, VariableSpace space, Repository repository, IMetaStore metaStore ) {
+	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev,
+			String[] input, String[] output, RowMetaInterface info, VariableSpace space, Repository repository,
+			IMetaStore metaStore) {
 		CheckResult cr;
-		if (Const.isEmpty(sourcePeselFieldName) && Const.isEmpty(sourceNipFieldName) && Const.isEmpty(sourceRegonFieldName) ) {
+		if (Const.isEmpty(sourcePeselFieldName) && Const.isEmpty(sourceNipFieldName)
+				&& Const.isEmpty(sourceRegonFieldName)) {
 			String error_message = "";
 			error_message = BaseMessages.getString(PKG, "PeselNipMessMeta.Check.FieldMissing");
 			cr = new CheckResult(CheckResult.TYPE_RESULT_ERROR, error_message, stepMeta);

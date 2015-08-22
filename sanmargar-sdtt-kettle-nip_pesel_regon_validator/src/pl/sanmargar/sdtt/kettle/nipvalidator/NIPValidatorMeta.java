@@ -52,19 +52,17 @@ import org.w3c.dom.Node;
 	i18nPackageName = "pl.sanmargar.sdtt.kettle.nipvalidator",
 	name = "SdttNipValidatorStep.Name", 
 	description = "SdttNipValidatorStep.TooltipDesc",
-	categoryDescription = "i18n:pl.sanmargar.sdtt.kettle:Steps.Category.Name"	
-//	categoryDescription = "i18n:org.pentaho.di.trans.step:BaseStep.Category.Transform"
+	categoryDescription = "i18n:pl.sanmargar.sdtt.kettle.nipvalidator:Steps.Category.Name"	
 )
 
 /**
  * @author rafal_jot
  */
 
-
 public class NIPValidatorMeta extends BaseStepMeta implements StepMetaInterface {
 
 	private static Class<?> PKG = NIPValidatorMeta.class; // for i18n purposes
-	
+
 	private String sourceNipFieldName;
 	private String resultStdNipFieldName;
 	private String resultFieldName;
@@ -133,12 +131,9 @@ public class NIPValidatorMeta extends BaseStepMeta implements StepMetaInterface 
 		this.resultTaxOfficeFieldName = resultTaxOfficeFieldname;
 	}
 
-
 	public void setResultStdNipFieldName(String resultStdNipFieldName) {
 		this.resultStdNipFieldName = resultStdNipFieldName;
 	}
-
-
 
 	public boolean isStandardizeCheck() {
 		return standardizeCheck;
@@ -182,8 +177,8 @@ public class NIPValidatorMeta extends BaseStepMeta implements StepMetaInterface 
 			setStandardizeCheck("Y".equalsIgnoreCase(XMLHandler.getTagValue(stepnode, NAME_STANDARDIZE_CHECK)));
 			setTaxOfficeNameCheck("Y".equalsIgnoreCase(XMLHandler.getTagValue(stepnode, NAME_TAX_OFFICE_NAME_CHECK)));
 		} catch (Exception e) {
-			throw new KettleXMLException(
-					BaseMessages.getString(PKG, "NIPValidatorMeta.Exception.UnableToReadStepInfo"), e);
+			throw new KettleXMLException(BaseMessages.getString(PKG, "NIPValidatorMeta.Exception.UnableToReadStepInfo"),
+					e);
 		}
 	}
 
@@ -193,7 +188,8 @@ public class NIPValidatorMeta extends BaseStepMeta implements StepMetaInterface 
 			rep.saveStepAttribute(id_transformation, id_step, NAME_SOURCE_NIP_FIELDNAME, sourceNipFieldName);
 			rep.saveStepAttribute(id_transformation, id_step, NAME_RESULT_STD_NIP_FIELDNAME, resultStdNipFieldName);
 			rep.saveStepAttribute(id_transformation, id_step, NAME_RESULT_FIELDNAME, resultFieldName);
-			rep.saveStepAttribute(id_transformation, id_step, NAME_RESULT_TAX_OFFICE_FIELDNAME, resultTaxOfficeFieldName);
+			rep.saveStepAttribute(id_transformation, id_step, NAME_RESULT_TAX_OFFICE_FIELDNAME,
+					resultTaxOfficeFieldName);
 			rep.saveStepAttribute(id_transformation, id_step, NAME_STANDARDIZE_CHECK, standardizeCheck);
 			rep.saveStepAttribute(id_transformation, id_step, NAME_TAX_OFFICE_NAME_CHECK, taxOfficeNameCheck);
 
@@ -251,8 +247,9 @@ public class NIPValidatorMeta extends BaseStepMeta implements StepMetaInterface 
 		}
 	}
 
-	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev, 
-			String[] input, String[] output, RowMetaInterface info, VariableSpace space, Repository repository, IMetaStore metaStore ) {
+	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev,
+			String[] input, String[] output, RowMetaInterface info, VariableSpace space, Repository repository,
+			IMetaStore metaStore) {
 		CheckResult cr;
 
 		checkNotEmpty(remarks, stepMeta, resultFieldName);

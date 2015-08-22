@@ -18,10 +18,10 @@
 
 package pl.sanmargar.sdtt.kettle.idsmess;
 
-
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.trans.step.BaseStepData;
 import org.pentaho.di.trans.step.StepDataInterface;
+
 //import org.pentaho.di.core.row.ValueMetaInterface;
 /**
  * @author rafal_jot
@@ -30,32 +30,29 @@ import org.pentaho.di.trans.step.StepDataInterface;
 
 public class NipPeselRegonMessData extends BaseStepData implements StepDataInterface {
 	public int indexOfField = -1;
-	
-/*	public String realStdPesel;
-	public String realResult;
-	public Date realBirthDate;
-	public String realGender;
-	public String dateFieldname;*/
 
-	  public RowMetaInterface outputRowMeta;
-	  public RowMetaInterface inputRowMeta;
+	/*
+	 * public String realStdPesel; public String realResult; public Date
+	 * realBirthDate; public String realGender; public String dateFieldname;
+	 */
 
-	  public int indexOfSourcePeselField = -1;
-	  public int indexOfSourceNipField = -1;
-	  public int indexOfSourceRegonField = -1;
-	  
-	  public int indexOfResultField  = -1;
-	  
-	  
-	  public int indexOfResultPeselField  = -1;
-	  public int indexOfResultNipField  = -1;
-	  public int indexOfResultRegonField  = -1;
-	  
-	  public int numResultFields;
-	  
-//	  public ValueMetaInterface inputMeta;
-//	  public ValueMetaInterface outputMeta;
-	  
+	public RowMetaInterface outputRowMeta;
+	public RowMetaInterface inputRowMeta;
+
+	public int indexOfSourcePeselField = -1;
+	public int indexOfSourceNipField = -1;
+	public int indexOfSourceRegonField = -1;
+
+	public int indexOfResultField = -1;
+
+	public int indexOfResultPeselField = -1;
+	public int indexOfResultNipField = -1;
+	public int indexOfResultRegonField = -1;
+
+	public int numResultFields;
+
+	// public ValueMetaInterface inputMeta;
+	// public ValueMetaInterface outputMeta;
 
 	public NipPeselRegonMessData() {
 		super();
@@ -63,4 +60,3 @@ public class NipPeselRegonMessData extends BaseStepData implements StepDataInter
 	}
 
 }
-	

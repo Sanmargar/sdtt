@@ -52,18 +52,17 @@ import org.w3c.dom.Node;
 	i18nPackageName = "pl.sanmargar.sdtt.kettle.regonvalidator",
 	name = "SdttRegonValidatorStep.Name", 
 	description = "SdttRegonValidatorStep.TooltipDesc",
-	categoryDescription = "i18n:pl.sanmargar.sdtt.kettle:Steps.Category.Name"	
+	categoryDescription = "i18n:pl.sanmargar.sdtt.kettle.regonvalidator:Steps.Category.Name"	
 )
 
 /**
  * @author rafal_jot
  */
 
-
 public class RegonValidatorMeta extends BaseStepMeta implements StepMetaInterface {
 
-	private static Class<?> PKG = RegonValidatorMeta.class; 
-	
+	private static Class<?> PKG = RegonValidatorMeta.class;
+
 	private String sourceRegonFieldName;
 	private String resultStdRegonFieldName;
 	private String resultFieldName;
@@ -132,12 +131,9 @@ public class RegonValidatorMeta extends BaseStepMeta implements StepMetaInterfac
 		this.resultRegionFieldName = resultRegionFieldname;
 	}
 
-
 	public void setResultStdRegonFieldName(String resultStdRegonFieldName) {
 		this.resultStdRegonFieldName = resultStdRegonFieldName;
 	}
-
-
 
 	public boolean isStandardizeCheck() {
 		return standardizeCheck;
@@ -250,8 +246,9 @@ public class RegonValidatorMeta extends BaseStepMeta implements StepMetaInterfac
 		}
 	}
 
-	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev, 
-			String[] input, String[] output, RowMetaInterface info, VariableSpace space, Repository repository, IMetaStore metaStore ) {
+	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev,
+			String[] input, String[] output, RowMetaInterface info, VariableSpace space, Repository repository,
+			IMetaStore metaStore) {
 		CheckResult cr;
 
 		checkNotEmpty(remarks, stepMeta, resultFieldName);
