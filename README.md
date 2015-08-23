@@ -7,7 +7,7 @@ This is a plugins for Pentaho Data Integration that allows validate polish tax a
 * PESEL, NIP, REGON Recognizer - corect fields contains numbers if they are misplaced
 
 more information:
-https://en.wikipedia.org/wiki/PESEL
-https://pl.wikipedia.org/wiki/REGON (in Polish)
-https://en.wikipedia.org/wiki/VAT_identification_number (pl. NIP means VAT number)
+https://en.wikipedia.org/wiki/PESEL <br>
+https://pl.wikipedia.org/wiki/REGON (in Polish) <br>
+https://en.wikipedia.org/wiki/VAT_identification_number (pl. NIP means VAT number) <br>
 
