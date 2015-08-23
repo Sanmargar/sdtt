@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Ant-Version: Apache Ant 1.9.4
-Created-By: 1.8.0_45-b14 (Oracle Corporation)
-Implementation-Title: Sanmargar Data Transformation Tools - Kettle Ste
- p Plugin - PESEL,NIP,REGON Validator
-Implementation-Version: 5.4-SNAPSHOT.development
-Implementation-Vendor: Sanmargar Team sp. z o. o.
-Implementation-ProductID: SDTT-KETTLE_PESEL_NIP_REGON_VALIDATOR
-
