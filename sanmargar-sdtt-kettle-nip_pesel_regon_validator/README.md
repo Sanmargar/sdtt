@@ -7,7 +7,7 @@ REGON Validator - validate and extract region
 PESEL, NIP, REGON Recognizer - try to correct if ids are misplaced 
 
 More information: 
-https://en.wikipedia.org/wiki/PESEL
+https://en.wikipedia.org/wiki/PESEL <br>
 https://pl.wikipedia.org/wiki/REGON
 https://en.wikipedia.org/wiki/VAT_identification_number
 
