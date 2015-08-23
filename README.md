@@ -1,5 +1,5 @@
 ## SDTT  - Sanmargar Data Transformation Tools
-### PESEL, NIP, REGON Validators
+### PESEL, NIP, REGON Validators for Pentaho Data Integration (kettle)
 
 This is a plugins for Pentaho Data Integration that allows validate polish tax and personal number. It contains four steps: 
 
