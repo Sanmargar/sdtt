@@ -21,6 +21,3 @@ support:
 
 http://sanmargar.pl
 
-bulid:
-
-http:BUILD.md
