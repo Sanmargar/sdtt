@@ -49,6 +49,7 @@
 	<target name="package" depends="compile" description="generate the distribution">
 
 		<mkdir dir="${package}" />
+		<mkdir dir="${package}/${plugin-name}" />
 
 		<!-- jar things up, also add the properties files (messages) and the icon -->
 		<copy todir="${classes}">
@@ -57,14 +58,14 @@
 		</copy>
 
 		<!-- jar class up -->
-		<jar jarfile="${package}/${jarfilename}" basedir="${classes}" />
+		<jar jarfile="${package}/${plugin-name}/${jarfilename}" basedir="${classes}" />
 
 	</target>
 
 	<target name="zip" depends="clean,package" description="generate plugin zip">
 		<echo>Generate plugin zip ...</echo>
 		<mkdir dir="${dist}" />
-		<copy todir="${package}">
+		<copy todir="${package}/${plugin-name}">
 			<fileset dir="${packageres}" includes="**/*" />
 		</copy>
 		<zip zipfile="${dist}/${zipfilename}" basedir="${package}" includes="**/*" />
