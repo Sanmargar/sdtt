@@ -20,5 +20,3 @@ https://en.wikipedia.org/wiki/VAT_identification_number (pl. NIP means VAT numbe
 support:
 
 http://sanmargar.pl
-
-
