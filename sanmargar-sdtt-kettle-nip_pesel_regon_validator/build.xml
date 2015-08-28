@@ -1,55 +1,105 @@
-<!--===========================================================================
-  This is the build file for the PDI SDK Step Plugin
-  
-  This build file will use the subfloor.xml file as the default build
-  process and should only override the tasks that need to differ from
-  the common build file.  
-============================================================================-->
-<project name="SanmargarSdttKettlePeselNipRegonValidator" basedir="." default="default">
+<?xml version="1.0"?>
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="KettleStepPlugin" default="zip" basedir="." >
 
 	<description>
-	  This build file works with the subfloor.xml file.
-	</description>
+        Build file for a PDI step plugin
+    </description>
 
+	<!-- you can use this file to set the kettle-dir property or change it directly below -->
+	<property file="build.properties" />
 
-	<property name="subfloor-ee.parent.file" value="subfloor-pkg.xml" />
-	<import file="build-res/subfloor.xml" />
+	<!-- set global properties for this build -->
 
-	<!--
-      AS STATED ABOVE, THE ONLY TASKS THAT SHOULD EXIST IN THIS BUILD FILE ARE
-      THE TASKS THAT NEED TO DIFFER FROM THE DEFAULT IMPLEMENTATION OF THE TASKS
-      FOUND IN common_build.xml.
-    -->
+	<property name="src" location="src" />
+	<property name="classes" location="classes" />
+	<property name="package" location="package" />
+	<property name="dist" location="dist" />
+	<property name="jarfilename" value="${plugin-name}.jar" />
+	<property name="zipfilename" value="${plugin-name}.zip" />
+	<property name="packageres" value="package-res" />
 
-	<!-- 
-		override to:
-			- include the source directly (this is SDK demo code)
-			- include kettle dependency jars
-			- include the build folder (used by the SDK user to build the plugin)
-			- include eclipse project files for convenience
-	-->
-	<target name="assemble.copy-libs">
-		
-		<copy todir="${approot.stage.dir}/lib">
-			<fileset dir="${lib.dir}"/>
-		</copy>
+	<!-- used to compile code -->
+	<path id="compile.classpath">
+		<fileset dir="${basedir}/lib">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
 
-		<copy todir="${approot.stage.dir}/src">
-			<fileset dir="src" excludes="**/.DS_Store" />
-		</copy>
-
-		<copy todir="${approot.stage.dir}/build">
-			<fileset dir="build" />
-		</copy>
-		
-		<copy file="eclipse/classpath.xml" tofile="${approot.stage.dir}/.classpath">
-		    <filterset>
-		      <filter token="PROJECT-REVISION" value="${project.revision}"/>
-		      <filter token="METASTORE-REVISION" value="${dependency.pentaho-metadata.revision}"/>
-		    </filterset>			
-		</copy>
-		<copy file="eclipse/project.xml" tofile="${approot.stage.dir}/.project" />
-			
+	<target name="bootstrap" description="Used to install the ivy task jar">
+		<mkdir dir="${user.home}/.ant/lib"/>
+		<get dest="${user.home}/.ant/lib/ivy.jar" src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.2.0/ivy-2.2.0.jar"/>
 	</target>
 
+	<target name="init" description="create timestamp and directories">
+		<echo>Init...</echo>
+		<tstamp />
+	</target>
+
+	<target name="resolve" depends="init" description="retrieve dependencies with ivy">
+		<ivy:retrieve />
+	</target>
+
+	<target name="compile" depends="resolve" description="compile the source ">
+		<mkdir dir="${classes}" />
+		<javac source="1.6" target="1.6" srcdir="${src}" destdir="${classes}" debuglevel="lines,vars,source" debug="true">
+			<classpath refid="compile.classpath" />
+		</javac>
+	</target>
+
+	<target name="package" depends="compile" description="generate the distribution">
+
+		<mkdir dir="${package}" />
+
+		<!-- jar things up, also add the properties files (messages) and the icon -->
+		<copy todir="${classes}">
+			<fileset dir="${src}" includes="**/*.properties" />
+			<fileset dir="${src}" includes="**/*.png,**/*.svg" />
+		</copy>
+
+		<!-- jar class up -->
+		<jar jarfile="${package}/${jarfilename}" basedir="${classes}" />
+
+	</target>
+
+	<target name="zip" depends="clean,package" description="generate plugin zip">
+		<echo>Generate plugin zip ...</echo>
+		<mkdir dir="${dist}" />
+		<copy todir="${package}">
+			<fileset dir="${packageres}" includes="**/*" />
+		</copy>
+		<zip zipfile="${dist}/${zipfilename}" basedir="${package}" includes="**/*" />
+	</target>
+
+	<target name="install" depends="init" description="compile and install into local PDI installation">
+
+		<echo message="Looking for local PDI installation in ${kettle-dir}" />
+
+		<available file="${kettle-dir}" type="dir" property="kettle-dir.present" />
+
+		<fail unless="kettle-dir.present" message="PDI installation not found. Please specify the path to your PDI installation in build.properties" />
+
+		<!-- remove previous installations -->
+		<delete dir="${kettle-dir}/plugins/steps/${plugin-name}" />
+
+		<!-- put fresh files in place -->
+
+		<mkdir dir="${kettle-dir}/plugins/steps/${plugin-name}" />
+
+		<copy todir="${kettle-dir}/plugins/steps/${plugin-name}">
+			<fileset dir="${package}" includes="**/*" />
+		</copy>
+
+		<echo message="Installed the plugin in PDI. To test, please restart Spoon." />
+
+	</target>
+
+	<target name="clean" description="clean up">
+		<delete dir="${classes}" />
+		<delete dir="${package}" />
+		<delete dir="${dist}" />
+	</target>
+
+	<target name="clean-all" depends="clean" description="Purge ivy cache">
+		<ivy:cleancache/>
+	</target>
 </project>

@@ -11,9 +11,9 @@
   <dependencies defaultconf="default">
   
     <!-- kettle dependencies -->
-    <dependency org="pentaho-kettle" name="kettle-core" rev="${project.revision}" transitive="false" changing="true"/>
-	<dependency org="pentaho-kettle" name="kettle-engine" rev="${project.revision}" transitive="false" changing="true"/>    
-	<dependency org="pentaho-kettle" name="kettle-ui-swt" rev="${project.revision}" transitive="false" changing="true"/>
+    <dependency org="pentaho-kettle" name="kettle-core" rev="${dependency.kettle.revision}" transitive="false" changing="true"/>
+	<dependency org="pentaho-kettle" name="kettle-engine" rev="${dependency.kettle.revision}" transitive="false" changing="true"/>    
+	<dependency org="pentaho-kettle" name="kettle-ui-swt" rev="${dependency.kettle.revision}" transitive="false" changing="true"/>
 	<dependency org="pentaho" name="pentaho-metadata" rev="${dependency.pentaho-metadata.revision}" changing="true" />
 	    
  	<!-- swt dependencies -->
@@ -24,4 +24,5 @@
     <dependency org="log4j" name="log4j" rev="1.2.16" transitive="false" conf="test->default"/>
      
   </dependencies>
+
 </ivy-module>
