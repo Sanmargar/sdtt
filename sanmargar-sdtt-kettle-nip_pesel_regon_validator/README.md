@@ -21,4 +21,3 @@ support:
 
 http://sanmargar.pl
 
-bulid:
