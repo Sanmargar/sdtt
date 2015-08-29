@@ -24,7 +24,9 @@
 3. Set main class to org.pentaho.di.ui.spoon.Spoon
 4. Set data-integration folder as Working Directory on Arguments Pane
 5. Add options to VM arguments: 
+
 -DKETTLE_PLUGIN_CLASSES=pl.sanmargar.sdtt.kettle.idsmess.NipPeselRegonMessMeta,pl.sanmargar.sdtt.kettle.nipvalidator.NIPValidatorMeta,pl.sanmargar.sdtt.kettle.peselvalidator.PESELValidatorMeta,pl.sanmargar.sdtt.kettle.regonvalidator.RegonValidatorMeta
+
 6. Run or debug 
 
 
