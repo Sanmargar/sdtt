@@ -52,7 +52,7 @@ import org.w3c.dom.Node;
 	i18nPackageName = "pl.sanmargar.sdtt.kettle.peselvalidator",
 	name = "SdttPeselValidatorStep.Name", 
 	description = "SdttPeselValidatorStep.TooltipDesc",
-	categoryDescription = "i18n:pl.sanmargar.sdtt.kettle.nipvalidator:Steps.Category.Name"	
+	categoryDescription = "i18n:pl.sanmargar.sdtt.kettle.peselvalidator:Steps.Category.Name"	
 )
 
 /**
