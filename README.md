@@ -1,7 +1,7 @@
 ## SDTT  - Sanmargar Data Transformation Tools
 ### PESEL, NIP, REGON Validators - Kettle Step Plugins
 
-This is a plugin for Pentaho Data Integration that allows validate polish tax and personal number. It contains four steps: 
+This is a plugin for Pentaho Data Integration that allows validate polish tax and personal numbers. It contains four steps: 
 
 * PESEL Validator - validate, extract birth date and gender
 * NIP Validator - validate, extract Tax Office name
